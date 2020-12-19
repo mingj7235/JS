@@ -1,17 +1,34 @@
-//이벤트 : 웹에서 일어나는 모든 것들. 
-
 const title = document.querySelector("#title");
 
-function handleClick () {
-    title.style.color = "blue";
+const BASE_COLOR = "rgb(52, 73, 94)";
+const OTHER_COLOR = "#e67e22";
+
+function handleCheck () {
+    const currentColor = title.style.color;
+    if (currentColor === BASE_COLOR) {
+        title.style.color = OTHER_COLOR;
+    }else {
+        title.style.color=BASE_COLOR;
+    }
 }
 
+function init () {
+    title.style.color = BASE_COLOR;
+    title.addEventListener("mouseenter", handleCheck);
+    //moustenter 는 마우스가 닿으면 액션하는 것임
+    //엄청 많은 이벤트들이 있다. MDN !!! -> javascript event MDN 을 검색하면 나온다. 
 
-title.addEventListener("click", handleClick);
-//handleResize() 와 handleResize의 차이 
-/* 
-    handleResize()를 하면 바로 적용이됨. 이벤트가 되지도 않았는데 !
-    handleResize를 하면 이벤트가 일어나면, 여기서는 리사이징! 그때 저 함수가 발동한다.
-*/
+}
 
+init();
 
+//온라인, 오프라인일 때 작동하는 함수... 오오...이런걸 MDN에서 이벤트를 찾아볼 수 있음 
+function handleOffline () {
+    console.log("Offline")
+}
+
+function handleOnline () {
+    console.log("Online")
+}
+window.addEventListener("offline", handleOffline);
+window.addEventListener("online", handleOnline);

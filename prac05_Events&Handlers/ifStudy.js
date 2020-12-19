@@ -28,5 +28,12 @@ if (20 > 5 || "nicolas" === "nicolas") {
 }
 
 const age = prompt ("How old are you");
-
+//prompt는 old API다 . 오래된것임
 console.log(age);
+
+if (age> 18) {
+    console.log ('you cna drink');
+}
+else {
+    console.log('you cant');
+}
