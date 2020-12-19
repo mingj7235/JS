@@ -7,8 +7,10 @@
 // Create -> Initialize ->Use
 
 const a = 221; //let : 변수를 초기화하거나 선언할 때 사용 ! const : constant ! 즉 상수를 얘기한다. 
+//const로 변수를 선언하고 변수를 변환시키면 예외가 생긴다. 
 let b = a-5;
 console.log(b, a);
 
+var c = 42; //var : 옛날에는 (4년전) var만 있었고 const와 let이 없었음. 그래서 var도 있고 let도 있는것임...
 
 
