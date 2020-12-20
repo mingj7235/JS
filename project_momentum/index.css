@@ -2,6 +2,15 @@ body {
     background-color:#95afc0;
   }
 
-h1 {
+body {
     color : #535c68;
+  }
+
+  .form,
+  .greetings {
+    display: none;
+  }
+
+  .showing {
+    display : block;
   }
