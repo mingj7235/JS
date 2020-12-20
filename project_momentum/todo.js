@@ -4,7 +4,20 @@ const toDoList = document.querySelector (".js-toDoList");
 
 const TODOS_LS = 'toDos';
 
-const toDos = [];
+let toDos = [];
+
+
+function deleteToDo(event) {
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter(function(toDo) {
+        return toDo.id !== parseInt(li.id);
+    });
+    toDos = cleanToDos;
+    saveToDos();
+
+}
 
 function saveToDos() {
     localStorage.setItem(TODOS_LS,JSON.stringify(toDos)); //JS의 모든 오브젝트를 JSON을 통해 String으로 변환시켜줌
@@ -18,6 +31,7 @@ function paintToDo(text){
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     delBtn.innerHTML = "x";
+    delBtn.addEventListener("click", deleteToDo);
     span.innerText = text;
     li.appendChild(delBtn);
     li.appendChild(span);
@@ -44,6 +58,7 @@ function loadToDos(){
         const parsedToDos = JSON.parse(loadedToDos);
         //JSON으로 파싱해온것임
         parsedToDos.forEach(function(toDo){ //forEach는 array에 담긴것을 각각 불러 오는 것임 
+            //filter와 function을 넣는 법 기억해야함 
             paintToDo(toDo.text);
         });
     }
